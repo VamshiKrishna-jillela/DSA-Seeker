@@ -52,67 +52,69 @@ for (let i = 0; i < docKeywords.length; i++) {
   fs.appendFileSync("length.txt", length + "\n");
 }
 
-let corpusKeyWords = [];
-for (let i = 0; i < docKeywords.length; i++) {
-  for (let j = 0; j < docKeywords[i].length; j++) {
-    if (corpusKeyWords.indexOf(docKeywords[i][j]) == -1) {
-      corpusKeyWords.push(docKeywords[i][j]);
-    }
-  }
-}
+console.log(sum / N);
 
-corpusKeyWords.sort();
+// let corpusKeyWords = [];
+// for (let i = 0; i < docKeywords.length; i++) {
+//   for (let j = 0; j < docKeywords[i].length; j++) {
+//     if (corpusKeyWords.indexOf(docKeywords[i][j]) == -1) {
+//       corpusKeyWords.push(docKeywords[i][j]);
+//     }
+//   }
+// }
 
-for (let i = 0; i < corpusKeyWords.length; i++) {
-  fs.appendFileSync("corpusKeyWords.txt", corpusKeyWords[i] + "\n");
-}
+// corpusKeyWords.sort();
 
-console.log(corpusKeyWords.length);
+// for (let i = 0; i < corpusKeyWords.length; i++) {
+//   fs.appendFileSync("corpusKeyWords.txt", corpusKeyWords[i] + "\n");
+// }
 
-let TF = new Array(N);
+// console.log(corpusKeyWords.length);
 
-for (let i = 0; i < N; i++) {
-  TF[i] = new Array(corpusKeyWords.length).fill(0);
-  let map = new Map();
-  docKeywords[i].forEach((key) => {
-    map.set(key, 0);
-  });
+// let TF = new Array(N);
 
-  docKeywords[i].forEach((key) => {
-    let cnt = map.get(key);
-    cnt++;
-    map.set(key, cnt);
-  });
+// for (let i = 0; i < N; i++) {
+//   TF[i] = new Array(corpusKeyWords.length).fill(0);
+//   let map = new Map();
+//   docKeywords[i].forEach((key) => {
+//     map.set(key, 0);
+//   });
 
-  docKeywords[i].forEach((key) => {
-    let id = corpusKeyWords.indexOf(key);
-    if (id != -1) {
-      TF[i][id] = map.get(key);
-    }
-  });
-}
+//   docKeywords[i].forEach((key) => {
+//     let cnt = map.get(key);
+//     cnt++;
+//     map.set(key, cnt);
+//   });
 
-for (let i = 0; i < N; i++) {
-  for (let j = 0; j < corpusKeyWords.length; j++) {
-    if (TF[i][j] != 0) {
-      fs.appendFileSync("TF.txt", i + " " + j + " " + TF[i][j] + "\n");
-    }
-  }
-}
+//   docKeywords[i].forEach((key) => {
+//     let id = corpusKeyWords.indexOf(key);
+//     if (id != -1) {
+//       TF[i][id] = map.get(key);
+//     }
+//   });
+// }
 
-let IDF = new Array(corpusKeyWords.length);
+// for (let i = 0; i < N; i++) {
+//   for (let j = 0; j < corpusKeyWords.length; j++) {
+//     if (TF[i][j] != 0) {
+//       fs.appendFileSync("TF.txt", i + " " + j + " " + TF[i][j] + "\n");
+//     }
+//   }
+// }
 
-for (let i = 0; i < corpusKeyWords.length; i++) {
-  let cnt = 0;
-  for (let j = 0; j < N; j++) {
-    if (TF[j][i]) cnt++;
-  }
-  if (cnt) IDF[i] = Math.log((N - cnt + 0.5) / (cnt + 0.5) + 1);
-}
+// let IDF = new Array(corpusKeyWords.length);
 
-IDF.forEach((value) => {
-  fs.appendFileSync("IDF.txt", value + "\n");
-});
+// for (let i = 0; i < corpusKeyWords.length; i++) {
+//   let cnt = 0;
+//   for (let j = 0; j < N; j++) {
+//     if (TF[j][i]) cnt++;
+//   }
+//   if (cnt) IDF[i] = Math.log((N - cnt + 0.5) / (cnt + 0.5) + 1);
+// }
+
+// IDF.forEach((value) => {
+//   fs.appendFileSync("IDF.txt", value + "\n");
+// });
 
 // let TFIDF = new Array(N);
 
