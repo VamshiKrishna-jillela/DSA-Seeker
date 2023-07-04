@@ -1,0 +1,31 @@
+{
+  "name": "dsa-seeker",
+  "version": "1.0.0",
+  "description": "Node Based Search Engine ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VamshiKrishna-jillela/DSA-Seeker.git"
+  },
+  "keywords": [
+    "Search-Engine",
+    "Data",
+    "Structures",
+    "and",
+    "Algorithms"
+  ],
+  "author": "Vamshi Krishna Jillela",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/VamshiKrishna-jillela/DSA-Seeker/issues"
+  },
+  "homepage": "https://github.com/VamshiKrishna-jillela/DSA-Seeker#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "remove-punctuation": "^0.0.4",
+    "stopword": "^2.0.8"
+  }
+}
